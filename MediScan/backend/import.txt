@@ -1,0 +1,6 @@
+pip install flask-cors
+pip install python-dotenv
+pip install flash
+pip install google-generativeai
+pip install tensorflow==2.12.0
+pip install Pillow

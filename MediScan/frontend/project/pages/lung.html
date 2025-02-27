@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lung Disease Detection - MediScan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <div class="logo">
+          <i class="fas fa-heartbeat"></i>
+          <h1>MediScan</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="module-page">
+        <div class="module-header">
+          <h1>Lung Disease Detection</h1>
+          <p>Our AI-powered system can analyze chest X-rays to help identify potential lung conditions including tuberculosis, pneumonia, and other respiratory diseases.</p>
+        </div>
+
+        <div class="module-content">
+          <div class="upload-section">
+            <h2>Upload Chest X-Ray</h2>
+            <p>Please upload a clear chest X-ray image for the most accurate analysis.</p>
+            
+            <div class="upload-area">
+              <label for="lung-upload">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>Upload X-Ray</span>
+                <p>Drag & drop or click to browse</p>
+              </label>
+              <input type="file" id="lung-upload" accept="image/*" />
+            </div>
+            
+            <button class="analyze-btn" id="analyze-btn" data-module="lung">Analyze Image</button>
+            <div class="result-area" id="lung-result"></div>
+          </div>
+          
+          <div class="info-section">
+            <h2>About Lung Diseases</h2>
+            <p>Lung diseases are some of the most common medical conditions worldwide. Early detection through imaging can significantly improve treatment outcomes for many respiratory conditions.</p>
+            
+            <div class="info-card">
+              <h3>Common Lung Conditions</h3>
+              <ul>
+                <li><strong>Tuberculosis:</strong> Infectious disease that primarily affects the lungs</li>
+                <li><strong>Pneumonia:</strong> Infection that inflames air sacs in one or both lungs</li>
+                <li><strong>COPD:</strong> Chronic obstructive pulmonary disease</li>
+                <li><strong>Lung Cancer:</strong> Abnormal cell growth in lung tissue</li>
+                <li><strong>Pulmonary Edema:</strong> Fluid accumulation in the lungs</li>
+                <li><strong>Pleural Effusion:</strong> Excess fluid between the layers of the pleura</li>
+              </ul>
+            </div>
+            
+            <div class="info-card">
+              <h3>Warning Signs</h3>
+              <ul>
+                <li>Persistent cough (especially with blood)</li>
+                <li>Shortness of breath or difficulty breathing</li>
+                <li>Chest pain or discomfort</li>
+                <li>Wheezing or abnormal breathing sounds</li>
+                <li>Chronic fatigue</li>
+                <li>Recurring respiratory infections</li>
+                <li>Unexplained weight loss</li>
+              </ul>
+            </div>
+            
+            <div class="info-card">
+              <h3>Prevention Tips</h3>
+              <ul>
+                <li>Don't smoke or quit smoking</li>
+                <li>Avoid exposure to pollutants</li>
+                <li>Prevent respiratory infections</li>
+                <li>Get vaccinated (flu, pneumonia, COVID-19)</li>
+                <li>Exercise regularly to strengthen lungs</li>
+                <li>Practice good hygiene</li>
+                <li>Get regular check-ups</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </main>
+
+  
+      <footer>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>MediScan</h3>
+            <p>Advanced disease detection using artificial intelligence to help with early diagnosis.</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Our Modules</h3>
+            <ul>
+              <li><a href="cataract.html">Cataract Detection</a></li>
+              <li><a href="lung.html">lung Disease Detection</a></li>
+              <li><a href="lung.html">Lung Disease Detection</a></li>
+              <li><a href="bone.html">Bone Condition Analysis</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-envelope"></i> info@mediscan.com</p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Medical Center Dr, Health City, HC 10101</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 MediScan. All rights reserved. | <span>Disclaimer: This tool is for educational purposes only and is not a substitute for professional medical advice.</span></p>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="../module-pages.js"></script>
+  </body>
+
+
+
+
+
+
+
+
+
+  <script>
+    // Store the uploaded image file
+  let uploadedImage = null;
+  
+  // Handle file upload and preview
+  function handleFileUpload(file) {
+    const uploadArea = document.querySelector('.upload-area');
+    uploadedImage = file;
+  
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        uploadArea.innerHTML = `
+          <img src="${e.target.result}" alt="Uploaded lung X-ray Image" style="max-width: 100%; height: auto; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px;">
+          <p>${file.name}</p>
+          <button id="reupload-btn" class="analyze-btn">Reupload Image</button>
+          <input type="file" id="lung-upload" accept="image/*" hidden />
+        `;
+  
+        // Add event listener for reupload
+        document.getElementById('reupload-btn').addEventListener('click', () => {
+          document.getElementById('lung-upload').click();
+        });
+  
+        // Handle new file selection
+        document.getElementById('lung-upload').addEventListener('change', (event) => {
+          handleFileUpload(event.target.files[0]);
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  
+  // Initial file input listener
+  document.getElementById('lung-upload').addEventListener('change', (event) => {
+    handleFileUpload(event.target.files[0]);
+  });
+  
+  // Analyze button logic
+  document.getElementById('analyze-btn').addEventListener('click', async () => {
+    const resultArea = document.getElementById('lung-result');
+    
+    if (!uploadedImage) {
+      resultArea.innerHTML = "<p style='color: red;'>Please upload an image first.</p>";
+      return;
+    }
+  
+    resultArea.textContent = "🔄 Analyzing image...";
+  
+    try {
+      const response = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({ status: 'success', prediction: 'lung disease Detected', confidence: '87%' });
+        }, 2000);
+      });
+  
+      if (response.status === 'success') {
+        resultArea.innerHTML = `
+          <p><strong>Result:</strong> ${response.prediction}</p>
+          <p><strong>Confidence:</strong> ${response.confidence}</p>
+        `;
+      }
+    } catch (error) {
+      resultArea.innerHTML = "<p style='color: red;'>An error occurred. Please try again.</p>";
+    }
+  });
+  
+  </script>
+</html>

@@ -1,0 +1,4 @@
+Tuberculosis
+Covid-19
+Pneumonia
+Normal

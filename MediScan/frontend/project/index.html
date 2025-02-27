@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediScan - Disease Detection Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <div class="logo">
+          <i class="fas fa-heartbeat"></i>
+          <h1>MediScan</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="pages/about.html">About</a></li>
+            <li><a href="pages/services.html">Services</a></li>
+            <li><a href="pages/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <h1>Advanced Disease Detection</h1>
+          <p>Using AI to help diagnose medical conditions early and accurately</p>
+          <div class="hero-buttons">
+            <a href="#detection-modules" class="btn primary-btn">Explore Modules</a>
+            <a href="pages/about.html" class="btn secondary-btn">Learn More</a>
+          </div>
+        </section>
+
+        <section class="detection-modules" id="detection-modules">
+          <h2 class="section-title">Our Detection Modules</h2>
+          <div class="module-container">
+            <div class="module" id="cataract-module">
+              <div class="module-icon">
+                <i class="fas fa-eye"></i>
+              </div>
+              <h2>Cataract Detection</h2>
+              <p>Upload an eye image to detect potential cataracts and vision issues.</p>
+              <a href="pages/cataract.html" class="module-btn">Open Module</a>
+            </div>
+
+            <div class="module" id="skin-module">
+              <div class="module-icon">
+                <i class="fas fa-allergies"></i>
+              </div>
+              <h2>Skin Disease Detection</h2>
+              <p>Identify potential skin conditions including melanoma and eczema.</p>
+              <a href="pages/skin.html" class="module-btn">Open Module</a>
+            </div>
+
+            <div class="module" id="lung-module">
+              <div class="module-icon">
+                <i class="fas fa-lungs"></i>
+              </div>
+              <h2>Lung Disease Detection</h2>
+              <p>Analyze chest X-rays for tuberculosis, pneumonia, and other conditions.</p>
+              <a href="pages/lung.html" class="module-btn">Open Module</a>
+            </div>
+
+            <div class="module" id="bone-module">
+              <div class="module-icon">
+                <i class="fas fa-bone"></i>
+              </div>
+              <h2>Bone Condition Analysis</h2>
+              <p>Detect fractures, arthritis, and other bone-related conditions.</p>
+              <a href="pages/bone.html" class="module-btn">Open Module</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="how-it-works">
+          <h2 class="section-title">How It Works</h2>
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <h3>Upload</h3>
+              <p>Upload your medical image to the appropriate module</p>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <h3>Analyze</h3>
+              <p>Our AI processes and analyzes the image</p>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <h3>Results</h3>
+              <p>Get instant preliminary results and recommendations</p>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <h3>Consult</h3>
+              <p>Share results with your healthcare provider</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="testimonials">
+          <h2 class="section-title">What Our Users Say</h2>
+          <div class="testimonial-container">
+            <div class="testimonial">
+              <div class="testimonial-content">
+                <p>"MediScan helped me identify a potential skin condition early, allowing me to seek treatment before it progressed."</p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="author-info">
+                  <h4>Sarah Johnson</h4>
+                  <p>Patient</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-content">
+                <p>"As a healthcare provider, I find MediScan to be an excellent preliminary screening tool that helps my patients take proactive steps."</p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <i class="fas fa-user-md"></i>
+                </div>
+                <div class="author-info">
+                  <h4>Dr. Michael Chen</h4>
+                  <p>Physician</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-content">
+                <p>"The bone fracture detection helped me understand the severity of my injury and guided my conversation with my orthopedist."</p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="author-info">
+                  <h4>Robert Williams</h4>
+                  <p>Patient</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="chatbot-container">
+        <div class="chatbot-toggle">
+          <i class="fas fa-comment-medical"></i>
+        </div>
+        <div class="chatbot-window">
+          <div class="chatbot-header">
+            <h3>MediBot Assistant</h3>
+            <button id="new-chat" class="new-chat">New Chat</button>
+
+            <button class="close-chat"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="chatbot-messages">
+            <div class="message bot">
+              <div class="message-content">
+                Hello! I'm MediBot, your medical assistant. How can I help you today?
+              </div>
+            </div>
+          </div>
+          <div class="chatbot-input">
+            <input type="text" placeholder="Type your question here..." id="chat-input" />
+            <button id="send-message"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>MediScan</h3>
+            <p>Advanced disease detection using artificial intelligence to help with early diagnosis.</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="pages/about.html">About</a></li>
+              <li><a href="pages/services.html">Services</a></li>
+              <li><a href="pages/contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Our Modules</h3>
+            <ul>
+              <li><a href="pages/cataract.html">Cataract Detection</a></li>
+              <li><a href="pages/skin.html">Skin Disease Detection</a></li>
+              <li><a href="pages/lung.html">Lung Disease Detection</a></li>
+              <li><a href="pages/bone.html">Bone Condition Analysis</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-envelope"></i> info@mediscan.com</p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Medical Center Dr, Health City, HC 10101</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 MediScan. All rights reserved. | <span>Disclaimer: This tool is for educational purposes only and is not a substitute for professional medical advice.</span></p>
+        </div>
+      </footer>
+    </div>
+    <script src="main.js" defer></script>
+  </body>
+
+
+
+
+
+
+  
+</html>

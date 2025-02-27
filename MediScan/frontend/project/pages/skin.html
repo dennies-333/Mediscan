@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skin Disease Detection - MediScan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <div class="logo">
+          <i class="fas fa-heartbeat"></i>
+          <h1>MediScan</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="module-page">
+        <div class="module-header">
+          <h1>Skin Disease Detection</h1>
+          <p>Our advanced AI system can analyze images of skin conditions to help identify potential issues including melanoma, eczema, psoriasis, and other common skin diseases.</p>
+        </div>
+
+        <div class="module-content">
+          <div class="upload-section">
+            <h2>Upload Skin Image</h2>
+            <p>Please upload a clear, well-lit image of the affected skin area for the most accurate analysis.</p>
+            
+            <div class="upload-area">
+              <label for="skin-upload">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>Upload Image</span>
+                <p>Drag & drop or click to browse</p>
+              </label>
+              <input type="file" id="skin-upload" accept="image/*" />
+            </div>
+            
+            <button class="analyze-btn"  id="analyze-btn" data-module="skin">Analyze Image</button>
+            <div class="result-area" id="skin-result"></div>
+          </div>
+          
+          <div class="info-section">
+            <h2>About Skin Diseases</h2>
+            <p>Skin diseases encompass a wide range of conditions that affect the skin, including rashes, inflammations, infections, and growths. Early detection is crucial for effective treatment.</p>
+            
+            <div class="info-card">
+              <h3>Common Skin Conditions</h3>
+              <ul>
+                <li><strong>Melanoma:</strong> A serious form of skin cancer</li>
+                <li><strong>Eczema:</strong> Inflammation causing itchy, red, and rough skin</li>
+                <li><strong>Psoriasis:</strong> Condition causing red, itchy, scaly patches</li>
+                <li><strong>Acne:</strong> Skin condition with pimples and spots</li>
+                <li><strong>Rosacea:</strong> Condition causing facial redness and visible blood vessels</li>
+                <li><strong>Dermatitis:</strong> Skin inflammation with itchy, red rash</li>
+              </ul>
+            </div>
+            
+            <div class="info-card">
+              <h3>Warning Signs</h3>
+              <p>For moles and skin growths, remember the ABCDE rule:</p>
+              <ul>
+                <li><strong>A</strong>symmetry: One half doesn't match the other</li>
+                <li><strong>B</strong>order: Irregular, ragged, or blurred edges</li>
+                <li><strong>C</strong>olor: Varied colors within the same mole</li>
+                <li><strong>D</strong>iameter: Larger than 6mm (pencil eraser)</li>
+                <li><strong>E</strong>volving: Changes in size, shape, or color</li>
+              </ul>
+            </div>
+            
+            <div class="info-card">
+              <h3>Prevention Tips</h3>
+              <ul>
+                <li>Use sunscreen with SPF 30+ daily</li>
+                <li>Wear protective clothing in the sun</li>
+                <li>Avoid tanning beds</li>
+                <li>Perform regular skin self-examinations</li>
+                <li>Stay hydrated and maintain a healthy diet</li>
+                <li>See a dermatologist annually for skin checks</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>MediScan</h3>
+            <p>Advanced disease detection using artificial intelligence to help with early diagnosis.</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Our Modules</h3>
+            <ul>
+              <li><a href="skin.html">skin Detection</a></li>
+              <li><a href="skin.html">Skin Disease Detection</a></li>
+              <li><a href="lung.html">Lung Disease Detection</a></li>
+              <li><a href="bone.html">Bone Condition Analysis</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-envelope"></i> info@mediscan.com</p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Medical Center Dr, Health City, HC 10101</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 MediScan. All rights reserved. | <span>Disclaimer: This tool is for educational purposes only and is not a substitute for professional medical advice.</span></p>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="../module-pages.js"></script>
+  </body>
+
+
+
+
+  <script>
+    // Store the uploaded image file
+  let uploadedImage = null;
+  
+  // Handle file upload and preview
+  function handleFileUpload(file) {
+    const uploadArea = document.querySelector('.upload-area');
+    uploadedImage = file;
+  
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        uploadArea.innerHTML = `
+          <img src="${e.target.result}" alt="Uploaded Skin Image" style="max-width: 100%; height: auto; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px;">
+          <p>${file.name}</p>
+          <button id="reupload-btn" class="analyze-btn">Reupload Image</button>
+          <input type="file" id="skin-upload" accept="image/*" hidden />
+        `;
+  
+        // Add event listener for reupload
+        document.getElementById('reupload-btn').addEventListener('click', () => {
+          document.getElementById('skin-upload').click();
+        });
+  
+        // Handle new file selection
+        document.getElementById('skin-upload').addEventListener('change', (event) => {
+          handleFileUpload(event.target.files[0]);
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  
+  // Initial file input listener
+  document.getElementById('skin-upload').addEventListener('change', (event) => {
+    handleFileUpload(event.target.files[0]);
+  });
+  
+  // Analyze button logic
+  document.getElementById('analyze-btn').addEventListener('click', async () => {
+    const resultArea = document.getElementById('skin-result');
+    
+    if (!uploadedImage) {
+      resultArea.innerHTML = "<p style='color: red;'>Please upload an image first.</p>";
+      return;
+    }
+  
+    resultArea.textContent = "🔄 Analyzing image...";
+  
+    try {
+      const response = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({ status: 'success', prediction: 'skin disease Detected', confidence: '87%' });
+        }, 2000);
+      });
+  
+      if (response.status === 'success') {
+        resultArea.innerHTML = `
+          <p><strong>Result:</strong> ${response.prediction}</p>
+          <p><strong>Confidence:</strong> ${response.confidence}</p>
+        `;
+      }
+    } catch (error) {
+      resultArea.innerHTML = "<p style='color: red;'>An error occurred. Please try again.</p>";
+    }
+  });
+  
+  </script>
+</html>
