@@ -200,7 +200,6 @@ document.getElementById('cataract-upload').addEventListener('change', (event) =>
   handleFileUpload(event.target.files[0]);
 });
 
-// Analyze button logic
 document.getElementById('analyze-btn').addEventListener('click', async () => {
   const resultArea = document.getElementById('cataract-result');
   
@@ -212,17 +211,27 @@ document.getElementById('analyze-btn').addEventListener('click', async () => {
   resultArea.textContent = "🔄 Analyzing image...";
 
   try {
-    const response = await new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({ status: 'success', prediction: 'Cataract Detected', confidence: '87%' });
-      }, 2000);
+    // Create FormData to send image to the backend API
+    const formData = new FormData();
+    formData.append("image", uploadedImage);
+
+    // Make a POST request to the backend API
+    const response = await fetch("http://localhost:5000/predict/cataract", {
+      method: "POST",
+      body: formData,
     });
 
-    if (response.status === 'success') {
+    // Check if the request was successful
+    if (response.ok) {
+      const data = await response.json();
+
+      // Handle the response from the API
       resultArea.innerHTML = `
-        <p><strong>Result:</strong> ${response.prediction}</p>
-        <p><strong>Confidence:</strong> ${response.confidence}</p>
+        <p><strong>Condition:</strong> ${data.class}</p>
+        <p><strong>Confidence:</strong> ${(data.confidence * 100).toFixed(2)}%</p>
       `;
+    } else {
+      resultArea.innerHTML = "<p style='color: red;'>Error: Unable to analyze the image. Please try again.</p>";
     }
   } catch (error) {
     resultArea.innerHTML = "<p style='color: red;'>An error occurred. Please try again.</p>";

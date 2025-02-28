@@ -188,33 +188,42 @@
   
   // Analyze button logic
   document.getElementById('analyze-btn').addEventListener('click', async () => {
-    const resultArea = document.getElementById('bone-result');
-    
-    if (!uploadedImage) {
-      resultArea.innerHTML = "<p style='color: red;'>Please upload an image first.</p>";
-      return;
+  const resultArea = document.getElementById('bone-result');
+  
+  if (!uploadedImage) {
+    resultArea.innerHTML = "<p style='color: red;'>Please upload an image first.</p>";
+    return;
+  }
+
+  resultArea.textContent = "🔄 Analyzing image...";
+
+  try {
+    // Create FormData to send image to the backend API
+    const formData = new FormData();
+    formData.append("image", uploadedImage);
+
+    // Make a POST request to the backend API
+    const response = await fetch("http://192.168.1.38:5000/predict/bone", {
+      method: "POST",
+      body: formData,
+    });
+
+    // Check if the request was successful
+    if (response.ok) {
+      const data = await response.json();
+
+      // Handle the response from the API
+      resultArea.innerHTML = `
+        <p><strong>Condition:</strong> ${data.class}</p>
+        <p><strong>Confidence:</strong> ${(data.confidence * 100).toFixed(2)}%</p>
+      `;
+    } else {
+      resultArea.innerHTML = "<p style='color: red;'>Error: Unable to analyze the image. Please try again.</p>";
     }
-  
-    resultArea.textContent = "🔄 Analyzing image...";
-  
-    try {
-      const response = await new Promise((resolve) => {
-        setTimeout(() => {
-          resolve({ status: 'success', prediction: 'bone disease Detected', confidence: '87%' });
-        }, 2000);
-      });
-  
-      if (response.status === 'success') {
-        resultArea.innerHTML = `
-          <p><strong>Result:</strong> ${response.prediction}</p>
-          <p><strong>Confidence:</strong> ${response.confidence}</p>
-        `;
-      }
-    } catch (error) {
-      resultArea.innerHTML = "<p style='color: red;'>An error occurred. Please try again.</p>";
-    }
-  });
-  
+  } catch (error) {
+    resultArea.innerHTML = "<p style='color: red;'>An error occurred. Please try again.</p>";
+  }
+});
   </script>
 
 

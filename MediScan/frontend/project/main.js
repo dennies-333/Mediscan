@@ -75,7 +75,7 @@ function initChatbot() {
 
   async function getBotResponse(message) {
     try {
-      const response = await fetch("http://127.0.0.1:5000/chat", {
+      const response = await fetch("http://192.168.1.38:5000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message })
@@ -113,7 +113,7 @@ const newChatButton = document.getElementById('new-chat');
 newChatButton.addEventListener('click', async () => {
   try {
     // Call the reset API
-    const response = await fetch("http://127.0.0.1:5000/reset", {
+    const response = await fetch("http://192.168.1.38:5000/reset", {
       method: "POST",
       headers: { "Content-Type": "application/json" }
     });
